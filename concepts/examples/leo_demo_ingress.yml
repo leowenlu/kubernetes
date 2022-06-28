@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: leo-demo-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: leo-demo-service
+            port:
+              number: 80
+      - pathType: ImplementationSpecific
+        path: /health
+        backend:
+          service:
+            name: leo-demo-service
+            port:
+              number: 80
