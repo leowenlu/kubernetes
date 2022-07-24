@@ -38,7 +38,6 @@ backend k8s_server
 EOF
 
 sudo ip route delete default
-# virtualbox bridge network, router ip is 192.168.101.
 sudo ip route add default via 192.168.101.1
 sudo systemctl restart haproxy
 ``

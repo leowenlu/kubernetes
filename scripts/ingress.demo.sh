@@ -12,5 +12,4 @@ vagrant ssh -c "kubectl apply -f ~/examples/leo_demo_ingress.yml"  master-1
 
 # get ingress-nginx-controller port number.
 # update haproxy.cfg with the port number.
-kubectl get svc -A | grep ingress-nginx-controller
-
+kubectl get service -A
