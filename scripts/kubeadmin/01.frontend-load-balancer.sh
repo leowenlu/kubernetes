@@ -13,7 +13,7 @@ defaults
 
 frontend kubernetes
     log global
-    bind 192.168.1.30:6443
+    bind *:6443
     option tcplog
     mode tcp
     default_backend kubernetes-master-nodes

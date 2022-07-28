@@ -13,3 +13,5 @@ sudo cat <<EOF | sudo tee /etc/docker/daemon.json
 }
 EOF
 sudo systemctl restart docker
+
+sudo apt -y install conntrack
