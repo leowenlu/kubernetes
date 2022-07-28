@@ -34,6 +34,9 @@ I am running this lab with my laptop which is Macbook Pro 2.6 GHz 6-Core Intel C
 
 ## Set's IP addresses in the range
 
+
+![Network Diagram](./images/k83-on-virtualbox.png)
+
     | VM            |  VM Name | Purpose       | IP           | Forwarded Port   |
     | ------------  | -------- |:-------------:| ------------:| ----------------:|
     | master-1      | master-1 | Master        | 192.168.1.11 |     2711         |
