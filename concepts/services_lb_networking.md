@@ -68,7 +68,7 @@ Kubernetes supports 2 primary modes of finding a Service - environment variables
 ### Environment Variables
 
 ```
-vagrant@master-1:~$ kubectl exec leo-app-demo-5f65764f75-t5vw6 -- printenv | grep SERVICE
+ kubectl exec leo-app-demo-5f65764f75-t5vw6 -- printenv | grep SERVICE
 KUBERNETES_SERVICE_HOST=10.96.0.1
 KUBERNETES_SERVICE_PORT=443
 KUBERNETES_SERVICE_PORT_HTTPS=443
@@ -77,7 +77,7 @@ KUBERNETES_SERVICE_PORT_HTTPS=443
 ### DNS
 
 ``` bash
-vagrant@master-1:~$ kubectl get services kube-dns --namespace=kube-system
+kubectl get services kube-dns --namespace=kube-system
 NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
 kube-dns   Cl
 

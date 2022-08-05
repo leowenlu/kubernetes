@@ -9,12 +9,14 @@ RAM_MASTER = 2048
 RAM_NODE = 8192
 CPU_MASTER = 2
 CPU_NODE = 4
-
+ST_CPU = 1
+ST_RAM = 1024
 IP_NW = "192.168.1."
 MASTER_IP_START = 10
 NODE_IP_START = 20
 LB_IP_START = 30
 PROXY_IP_START = 40
+ST_IP = "192.168.1.200"
 PUBLIC_FACINGE_IP = "192.168.101.252"
 GW = "192.168.101.1"
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
@@ -122,21 +124,21 @@ Vagrant.configure("2") do |config|
     node.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
   end
 
-  # Provision Proxy Node
-  #config.vm.define "proxy" do |node|
-  #  node.vm.provider "virtualbox" do |vb|
-  #      vb.name = "kubernetes-proxy"
-  #      vb.memory = 512
-  #      vb.cpus = 1
-  #  end
-  #  node.vm.hostname = "proxy"
-  #  node.vm.network :private_network, ip: IP_NW + "#{PROXY_IP_START}"
-  #  node.vm.network :public_network, ip: "#{PUBLIC_FACINGE_IP}"
-  #  node.vm.network "forwarded_port", guest: 22, host: 27400
-  #  node.vm.provision "setup-hosts", :type => "shell", :path => "ubuntu/vagrant/setup-hosts.sh" do |s|
-  #    s.args = ["enp0s8"]
-  #  end
-  #  node.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
+  # Provision nfs storage server
+  config.vm.define "st" do |node|
+    node.vm.provider "virtualbox" do |vb|
+        vb.name = "st"
+        vb.memory = 512
+        vb.cpus = 1
+    end
+    node.vm.hostname = "st"
+    node.vm.network :private_network, ip: "#{ST_IP}"
+    node.vm.network "forwarded_port", guest: 22, host: 2740
+    node.vm.provision "setup-hosts", :type => "shell", :path => "ubuntu/vagrant/setup-hosts.sh" do |s|
+      s.args = ["enp0s8"]
+    end
+    node.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
+  end
   #end
 
 end

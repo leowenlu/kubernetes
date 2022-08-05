@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgresql-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-manual
+  nfs:
+    server: 192.168.12.200
+    path: "/srv/nfs/db"
+  mountOptions:
+    - nfsvers=4.2

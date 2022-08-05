@@ -16,5 +16,6 @@ cat >> /etc/hosts <<EOF
 192.168.1.23  node-3
 192.168.1.30  lb
 192.168.1.40  proxy
+192.168.1.200  st
 EOF
 sudo apt-get update && sudo apt-get -y upgrade
