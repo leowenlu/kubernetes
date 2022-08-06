@@ -1,4 +1,4 @@
-source ../scripts/set_env_from_file.sh -f ../scripts/env.cfg
+source ../scripts/set_env_from_file.sh -f ../vagrant/env.cfg
 ## join etcd
 
 #

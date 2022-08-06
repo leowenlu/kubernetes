@@ -6,8 +6,8 @@ echo "#        1. setup LB            #"
 echo "########----------------#########"
 
 SCRIPT=01.frontend-load-balancer.sh
-vagrant scp ../scripts/kubeadmin/$SCRIPT loadbalancer:$SCRIPT
-vagrant ssh -c "chmod +x $SCRIPT;  ~/$SCRIPT" loadbalancer
+vagrant scp ../scripts/kubeadmin/$SCRIPT lb:$SCRIPT
+vagrant ssh -c "chmod +x $SCRIPT;  ~/$SCRIPT" lb
 
 echo "########----------------#########"
 echo "#   2. install kubes commands   #"

@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # "Set env"
-source ../scripts/set_env_from_file.sh -f ../scripts/env.cfg
+source ../scripts/set_env_from_file.sh -f ../vagrant/env.cfg
 
 # copy binary to vm
 ## download and install cni to both master and node
@@ -17,10 +17,9 @@ insrall_setup_kube="sudo mkdir -p ${CNI_BIN_PATH} ${USR_BIN_PATH} /etc/systemd/s
                     sudo cp ./downloads/kubelet.service /etc/systemd/system/kubelet.service ; \
                     sudo cp {./downloads/kubeadm,./downloads/kubelet,./downloads/kubectl} ${USR_BIN_PATH} ; \
                     sudo tar -xzf  ./downloads/${CRICTL_TART_FILE} -C ${USR_BIN_PATH} ; \
-                    sudo cp ./downloads/10-kubeadm.conf /etc/systemd/system/kubelet.service.d/10-kubeadm.conf ; \
-                    sudo systemctl enable --now kubelet \n
+                    sudo systemctl enable --now kubelet \
                     "
-
+NUM_MASTER_NODE=2
 for ((n=1;n<=$NUM_MASTER_NODE;n++))
   do
     echo "coping files from ../downloads to master-${n} "
@@ -29,13 +28,15 @@ for ((n=1;n<=$NUM_MASTER_NODE;n++))
     vagrant ssh -c "${insrall_setup_kube}" master-$n
   done
 
-for ((n=1;n<=$NUM_WORKER_NODE;n++))
-  do
-    echo "coping files from ../downloads to node-${n} "
-    vagrant scp ../downloads/ node-$n:~
-    echo "Ceating and seting up cni crictl and kubectl kubadmin "
-    vagrant ssh -c "${insrall_setup_kube}" node-$n
-  done
+#for ((n=1;n<=$NUM_WORKER_NODE;n++))
+#  do
+#    echo "coping files from ../downloads to node-${n} "
+#    vagrant scp ../downloads/ node-$n:~
+#    echo "Ceating and seting up cni crictl and kubectl kubadmin "
+#    vagrant ssh -c "${insrall_setup_kube}" node-$n
+#  done
 #troubleshoot
 
 # sudo journalctl -xeu kubelet
+
+#sudo kubeadm init --control-plane-endpoint '192.168.101.252' --apiserver-advertise-address 192.168.101.12  --pod-network-cidr 10.23.0.0/16

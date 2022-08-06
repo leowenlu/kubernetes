@@ -37,14 +37,14 @@ I am running this lab with my laptop which is Macbook Pro 2.6 GHz 6-Core Intel C
 
 ![Network Diagram](./images/k83-on-virtualbox.png)
 
-    | VM            |  VM Name | Purpose       | IP           | Forwarded Port   |
-    | ------------  | -------- |:-------------:| ------------:| ----------------:|
-    | master-1      | master-1 | Master        | 192.168.1.11 |     2711         |
-    | master-2      | master-2 | Master        | 192.168.1.12 |     2712         |
-    | worker-1      | worker-1 | Worker        | 192.168.1.21 |     2721         |
-    | worker-2      | worker-2 | Worker        | 192.168.1.22 |     2722         |
-    | loadbalancer  | lb       | LoadBalancer  | 192.168.1.30 |     2730         |
-
+    | VM            |  VM Name | Purpose       |   IP           | Forwarded Port   |
+    | ------------  | -------- |:-------------:| --------------:| ----------------:|
+    | master-1      | master-1 | Master        | 192.168.101.11 |     2711         |
+    | master-2      | master-2 | Master        | 192.168.101.12 |     2712         |
+    | worker-1      | worker-1 | Node          | 192.168.101.21 |     2721         |
+    | worker-2      | worker-2 | Node          | 192.168.101.22 |     2722         |
+    | lb            | lb       | LoadBalancer  | 192.168.101.30 |     2730         |
+    | nfs           | nfs      | nfs           | 192.168.101.20 |                  |
 
 ## Labs
 
