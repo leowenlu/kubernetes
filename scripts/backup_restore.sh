@@ -6,7 +6,7 @@ for vm in master-1 master-2 node-1 node-2 loadbalancer
   done
 
 # restore to init and start again
-for vm in master-1 master-2 node-1 node-2 loadbalancer
+for vm in master-1 master-2 node-1 node-2 lb
   do
     vagrant snapshot restore $vm "${vm}-${vagrantBackupStage}"
   done

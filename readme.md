@@ -49,7 +49,7 @@ I am running this lab with my laptop which is Macbook Pro 2.6 GHz 6-Core Intel C
 ## Labs
 
 ## TODO
-1. currently the `workstation` is used to init the k8s setup, work need to do to make a to admin k8s.
+1. env.cfg merge with variables in vagrantfile
 
 
 ## labs to do  [X]
