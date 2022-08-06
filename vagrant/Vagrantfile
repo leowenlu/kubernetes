@@ -1,9 +1,21 @@
 # -*- mode: ruby -*-
 # vi:set ft=ruby sw=2 ts=2 sts=2:
 
-settings = File.read 'env.cfg'
-eval settings
+NUM_MASTER_NODE=2
+NUM_WORKER_NODE=2
+RAM_MASTER=2048
+RAM_NODE=8192
+CPU_MASTER=2
+CPU_NODE=4
 
+# Define the number of master and worker nodes
+# If this number is changed, remember to update setup-hosts.sh script with the new hosts IP details in /etc/hosts of each VM.
+IP_NW='192.168.101.'
+MASTER_IP_START=10
+NODE_IP_START=20
+LB_IP='192.168.101.252'
+GW='192.168.101.1'
+NFS_IP='192.168.101.20'
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
